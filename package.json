@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "node lib/server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "got": "^9.5.0"
+  }
+}
