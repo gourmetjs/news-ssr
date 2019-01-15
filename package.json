@@ -6,5 +6,13 @@
   "dependencies": {
     "express": "^4.16.4",
     "got": "^9.5.0"
+  },
+  "devDependencies": {
+    "@gourmet/gourmet-cli": "^1.1.0",
+    "@gourmet/group-react-i80": "^1.2.0",
+    "@gourmet/preset-react-emotion": "^1.2.0",
+    "bootstrap": "^4.2.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   }
 }
