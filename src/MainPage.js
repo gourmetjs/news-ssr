@@ -1,8 +1,10 @@
+import "whatwg-fetch";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, {Component} from "react";
+import i80, {ActiveRoute} from "@gourmet/react-i80";
 import {css} from "emotion";
-import {NewsView} from "./NewsView";
-import {SavedView} from "./SavedView";
+import NewsView from "./NewsView";
+import SavedView from "./SavedView";
 
 const cssMain = css`
   max-width: 50em;

@@ -1,23 +1,24 @@
 import React, {Component} from "react";
-import newsClient from "./newsClient";
-import NewsList from "../components/NewsList";
+import * as newsClient from "./newsClient";
+import NewsList from "./components/NewsList";
 
 export default class SavedView extends Component {
-  static getInitialProps() {
-    return newsClient.getSaved({page: 1});
+  static getInitialProps(gmctx) {
+    return newsClient.getSaved(gmctx, {page: 1});
   }
 
   render() {
+    const {gmctx} = this.props;
     return (
       <>
         <h5>
           Saved News Articles
         </h5>
         <NewsList
-          data={this.props.articles}
-          fetch={page => newsClient.getSaved({page})}
-          save={articles => newsClient.save({articles})}
-          unsave={ids => newsClient.usave({ids})}
+          articles={this.props.articles}
+          fetch={page => newsClient.getSaved(gmctx, {page})}
+          save={articles => newsClient.save(gmctx, {articles})}
+          unsave={ids => newsClient.unsave(gmctx, {ids})}
         />
       </>
     );
