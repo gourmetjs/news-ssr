@@ -71,12 +71,7 @@ export default class NewsPane extends Component {
         )}
         {hasMore ? (
           <div className={cssFooter}>
-            <LoadButton label="Load more" onLoad={() => {
-              return this.loadMore().catch(err => {
-                this.setState({lastError: err});
-                throw err;
-              });
-            }}/>
+            <LoadButton label="Load more" onLoad={() => this.loadMore()}/>
           </div>
         ) : null}
       </>
@@ -85,7 +80,7 @@ export default class NewsPane extends Component {
 
   loadMore() {
     return NewsPane.fetchArticles(this.props.gmctx, {
-      category: this.state.category,
+      category: this.props.category,
       page: this.state.page + 1
     }).then(data => {
       this.setState({
@@ -93,6 +88,9 @@ export default class NewsPane extends Component {
         hasMore: data.hasMore,
         page: this.state.page + 1
       });
+    }).catch(err => {
+      this.setState({lastError: err});
+      throw err;
     });
   }
 

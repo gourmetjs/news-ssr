@@ -34,18 +34,18 @@ export default class Article extends Component {
     const publishedAt = new Date(article.publishedAt).toLocaleString("en-US");
     return (
       <div className={"media " + cssArticle}>
-        <a href={article.url}>
+        <a href={article.url} target="_blank" rel="noopener noreferrer">
           <img className={`${cssImage} img-thumbnail mr-3`} src={article.image}/>
         </a>
         <div className="media-body">
           <h5 className={cssTitle}>
-            <a href={article.url}>
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
               {article.title}
             </a>
           </h5>
           {article.description}
           <div className={cssSource}>
-            <a href={article.url}>
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
               {article.source} - {publishedAt}
             </a>
           </div>

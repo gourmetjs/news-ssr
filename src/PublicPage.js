@@ -1,19 +1,18 @@
 import React, {Component} from "react";
 import i80, {ActiveRoute, Link} from "@gourmet/react-i80";
 import {css} from "emotion";
-import TabbedPanes from "./components/TabbedPanes";
-import NewsView from "./NewsView";
-import SavedView from "./SavedView";
+import LoginView from "./LoginView";
+import SignupView from "./SignupView";
 
 const cssMain = css`
   max-width: 60em;
   padding: 2em 0;
 `;
 
-export default class MainPage extends Component {
+export default class PublicPage extends Component {
   static router = i80([
-    ["/", NewsView],
-    ["/saved", SavedView]
+    ["/login", LoginView],
+    ["/signup", SignupView]
   ]);
 
   render() {
