@@ -16,6 +16,7 @@
     "@gourmet/preset-react-emotion": "^1.2.0",
     "@gourmet/self-url": "^1.1.0",
     "bootstrap": "^4.2.1",
+    "classnames": "^2.2.6",
     "nodemon": "^1.18.9",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
