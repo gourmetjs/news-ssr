@@ -28,39 +28,36 @@ const cssBookmark = css`
   right: 0;
 `;
 
-export default class Article extends Component {
-  render() {
-    const {article, saveArticles, unsaveArticles} = this.props;
-    const publishedAt = new Date(article.publishedAt).toLocaleString("en-US");
-    return (
-      <div className={"media " + cssArticle}>
-        <a href={article.url} target="_blank" rel="noopener noreferrer">
-          <img className={`${cssImage} img-thumbnail mr-3`} src={article.image}/>
-        </a>
-        <div className="media-body">
-          <h5 className={cssTitle}>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
-              {article.title}
-            </a>
-          </h5>
-          {article.description}
-          <div className={cssSource}>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
-              {article.source} - {publishedAt}
-            </a>
-          </div>
+export default function Article({article, saveArticles, unsaveArticles}) {
+  const publishedAt = new Date(article.publishedAt).toLocaleString("en-US");
+  return (
+    <div className={"media " + cssArticle}>
+      <a href={article.url} target="_blank" rel="noopener noreferrer">
+        <img className={`${cssImage} img-thumbnail mr-3`} src={article.image}/>
+      </a>
+      <div className="media-body">
+        <h5 className={cssTitle}>
+          <a href={article.url} target="_blank" rel="noopener noreferrer">
+            {article.title}
+          </a>
+        </h5>
+        {article.description}
+        <div className={cssSource}>
+          <a href={article.url} target="_blank" rel="noopener noreferrer">
+            {article.source} - {publishedAt}
+          </a>
         </div>
-        <BookmarkButton
-          className={cssBookmark}
-          saved={article.saved}
-          onClick={() => {
-            if (article.saved)
-              unsaveArticles([article.id]);
-            else
-              saveArticles([article]);
-          }}
-        />
       </div>
-    );
-  }
+      <BookmarkButton
+        className={cssBookmark}
+        saved={article.saved}
+        onClick={() => {
+          if (article.saved)
+            unsaveArticles([article.id]);
+          else
+            saveArticles([article]);
+        }}
+      />
+    </div>
+  );
 }

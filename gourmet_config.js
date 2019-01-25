@@ -1,7 +1,7 @@
 module.exports = {
   pages: {
-    public: "./src/PublicPage",
-    main: "./src/MainPage"
+    public: "./src/containers/PublicPage",
+    main: "./src/containers/MainPage"
   },
 
   config: {

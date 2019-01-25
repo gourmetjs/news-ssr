@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {css} from "emotion";
-import * as httpApi from "./httpApi";
-import Articles from "./components/Articles";
-import LoadButton from "./components/LoadButton";
-import ErrorBanner from "./components/ErrorBanner";
+import * as httpApi from "../utils/httpApi";
+import Articles from "../components/Articles";
+import LoadButton from "../components/LoadButton";
+import ErrorBanner from "../components/ErrorBanner";
 
 const cssFooter = css`
   padding: 1em 0;

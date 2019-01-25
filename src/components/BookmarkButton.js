@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import cx from "classnames";
 import {css} from "emotion";
 
@@ -11,13 +11,10 @@ const cssBookmark = css`
   }
 `;
 
-export default class BookmarkButton extends Component {
-  render() {
-    const {saved, ...props} = this.props;
-    return (
-      <div {...props}>
-        <i className={cx(saved ? "fas" : "far", "fa-bookmark", cssBookmark)}/>
-      </div>
-    );
-  }
+export default function BookmarkButton({saved, ...props}) {
+  return (
+    <div {...props}>
+      <i className={cx(saved ? "fas" : "far", "fa-bookmark", cssBookmark)}/>
+    </div>
+  );
 }

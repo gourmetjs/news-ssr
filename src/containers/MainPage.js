@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import i80, {ActiveRoute, Link} from "@gourmet/react-i80";
 import {css} from "emotion";
-import TabbedPanes from "./components/TabbedPanes";
+import TabbedPanes from "../components/TabbedPanes";
 import NewsView from "./NewsView";
 import SavedView from "./SavedView";
 
