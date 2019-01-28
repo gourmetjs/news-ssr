@@ -1,27 +1,33 @@
 import React, {Component} from "react";
-import FormBox from "../components/FormBox";
+import CenteredBox from "../components/CenteredBox";
+import HorzForm from "../components/HorzForm";
 
 export default class LoginView extends Component {
   render() {
     return (
-      <FormBox
-        title="Please login"
-        items={[{
-          name: "username",
-          label: "Username",
-          type: "text",
-          required: true
-        }, {
-          name: "password",
-          label: "Password",
-          type: "password",
-          required: true
-        }, {
-          name: "submit",
-          type: "submit",
-          label: "Log in"
-        }]}
-      />
+      <CenteredBox
+        header={<h3>Log in to NewsApp</h3>}
+        footer={<p>New to NewsApp? <a href="/signup">Create an account.</a></p>}
+      >
+        <HorzForm
+          items={[{
+            type: "text",
+            name: "username",
+            label: "Username",
+            placeholder: "Username, not email",
+            required: true
+          }, {
+            type: "password",
+            name: "password",
+            label: "Password",
+            required: true
+          }, {
+            type: "submit",
+            name: "submit",
+            label: "Log in"
+          }]}
+        />
+      </CenteredBox>
     );
   }
 }
