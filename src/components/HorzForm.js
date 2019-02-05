@@ -53,8 +53,8 @@ export default class HorzForm extends Component {
 
     Promise.resolve().then(() => {
       return onSubmit();
-    }).then(() => {
-      if (this._isMounted) {
+    }).then(clear => {
+      if (clear && this._isMounted) {
         this.setState({
           isPending: false,
           lastError: null
@@ -64,7 +64,7 @@ export default class HorzForm extends Component {
       if (this._isMounted) {
         this.setState({
           isPending: false,
-          lastError: err.toString()
+          lastError: err.message || err.toString()
         });
       }
     });

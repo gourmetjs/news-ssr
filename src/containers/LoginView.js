@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import CenteredBox from "../components/CenteredBox";
 import HorzForm from "../components/HorzForm";
+import * as httpApi from "../utils/httpApi";
 
 export default class LoginView extends Component {
   static HEADER = (<h3>Log in to NewsApp</h3>);
@@ -40,15 +41,11 @@ export default class LoginView extends Component {
   }
 
   onSubmit() {
-    const data = {
-      username: this.usernameRef.current.value,
-      password: this.passwordRef.current.value
-    };
-    console.log(data);
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        reject(Error("HAHA"));
-      }, 2000);
+    const username = this.usernameRef.current.value.toLowerCase().trim();
+    const password = this.passwordRef.current.value.trim();
+
+    return httpApi.post(this.props.gmctx, "/api/login", {username, password}).then(() => {
+      window.location = "/";
     });
    }
 }

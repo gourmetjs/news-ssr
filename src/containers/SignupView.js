@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import CenteredBox from "../components/CenteredBox";
 import HorzForm from "../components/HorzForm";
+import * as httpApi from "../utils/httpApi";
 
 export default class SignupView extends Component {
   static HEADER = (<h3>Create an account</h3>);
   static FOOTER = (<p>Already have an account? <a href="/login">Log in instead.</a></p>);
 
+  nameRef = React.createRef();
   usernameRef = React.createRef();
   passwordRef = React.createRef();
   verifyRef = React.createRef();
@@ -14,6 +16,14 @@ export default class SignupView extends Component {
     return (
       <CenteredBox header={SignupView.HEADER} footer={SignupView.FOOTER}>
         <HorzForm onSubmit={() => this.onSubmit()}>
+          <div className="form-group row">
+            <label htmlFor="name" className="col-sm-3 col-form-label">Name:</label>
+            <div className="col-sm-9">
+              <input type="text" className="form-control" id="name" name="name"
+                placeholder="Your name" ref={this.nameRef} required
+              />
+            </div>
+          </div>
           <div className="form-group row">
             <label htmlFor="username" className="col-sm-3 col-form-label">Username:</label>
             <div className="col-sm-9">
@@ -51,19 +61,16 @@ export default class SignupView extends Component {
   }
 
   onSubmit() {
-    const data = {
-      username: this.usernameRef.current.value,
-      password: this.passwordRef.current.value,
-      verify: this.verifyRef.current.value
-    };
+    const name = this.nameRef.current.value.trim();
+    const username = this.usernameRef.current.value.toLowerCase().trim();
+    const password = this.passwordRef.current.value.trim();
+    const verify = this.verifyRef.current.value.trim();
 
-    if (data.password !== data.verify)
+    if (password !== verify)
       throw Error("Two passwords don't match");
-    console.log(data);
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        reject(Error("HAHA"));
-      }, 2000);
+
+    return httpApi.post(this.props.gmctx, "/api/signup", {name, username, password}).then(() => {
+      window.location = "/";
     });
   }
 }
