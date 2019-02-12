@@ -29,8 +29,8 @@ export default class SignupView extends Component {
             <div className="col-sm-9">
               <input type="text" className="form-control" id="username" name="username"
                 placeholder="Username, not email" ref={this.usernameRef}
-                required pattern="[A-Za-z0-9._-]{5,20}"
-                title="Combination of letters, numbers, dots, dashes and underscores / min 5 characters"
+                required pattern="[A-Za-z0-9._-]{2,20}"
+                title="Only letters, numbers, dots, dashes and underscores / min 2 characters"
               />
             </div>
           </div>

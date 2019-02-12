@@ -4,7 +4,7 @@ exports.up = async function(knex) {
     table.increments("id");
     table.integer("userId").notNullable();
     table.string("articleId").notNullable();
-    table.json("article");
+    table.text("article");
     table.unique(["userId", "articleId"]);
   });
 };

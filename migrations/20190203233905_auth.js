@@ -5,7 +5,6 @@ exports.up = async function(knex) {
     table.string("username").notNullable().unique();
     table.string("password");
     table.string("name");
-    table.index("username");
   });
 };
 

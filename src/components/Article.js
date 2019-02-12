@@ -28,7 +28,7 @@ const cssBookmark = css`
   right: 0;
 `;
 
-export default function Article({article, saveArticles, unsaveArticles}) {
+export default function Article({article, saveArticle, unsaveArticle}) {
   const publishedAt = new Date(article.publishedAt).toLocaleString("en-US");
   return (
     <div className={"media " + cssArticle}>
@@ -53,9 +53,9 @@ export default function Article({article, saveArticles, unsaveArticles}) {
         saved={article.saved}
         onClick={() => {
           if (article.saved)
-            unsaveArticles([article.id]);
+            unsaveArticle(article.id);
           else
-            saveArticles([article]);
+            saveArticle(article);
         }}
       />
     </div>

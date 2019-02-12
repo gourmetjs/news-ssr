@@ -63,8 +63,8 @@ export default class NewsPane extends Component {
         {articles && articles.length ? (
           <Articles
             articles={articles}
-            saveArticles={articles => this.saveArticles(articles)}
-            unsaveArticles={ids => this.unsaveArticles(ids)}
+            saveArticle={article => this.saveArticle(article)}
+            unsaveArticle={id => this.unsaveArticle(id)}
           />
         ) : (
           <Empty/>
@@ -94,13 +94,13 @@ export default class NewsPane extends Component {
     });
   }
 
-  saveArticles(articles) {
-    return httpApi.post(this.props.gmctx, "/api/news", {action: "save", articles}).then(({savedIds}) => {
-      const articles = this.state.articles.map(article => {
-        if (savedIds.indexOf(article.id) !== -1)
-          return {...article, saved: true};
+  saveArticle(article) {
+    return httpApi.post(this.props.gmctx, "/api/news", {action: "save", article}).then(() => {
+      const articles = this.state.articles.map(a => {
+        if (a.id === article.id)
+          return {...a, saved: true};
         else
-          return article;
+          return a;
       });
       this.setState({articles});
     }).catch(err => {
@@ -108,19 +108,19 @@ export default class NewsPane extends Component {
     });
   }
   
-  unsaveArticles(ids) {
-    return httpApi.post(this.props.gmctx, "/api/news", {action: "unsave", ids}).then(({deletedIds}) => {
+  unsaveArticle(articleId) {
+    return httpApi.post(this.props.gmctx, "/api/news", {action: "unsave", articleId}).then(() => {
       let articles;
       if (this.props.category === "latest") {
-        articles = this.state.articles.map(article => {
-          if (deletedIds.indexOf(article.id) !== -1)
-            return {...article, saved: false};
+        articles = this.state.articles.map(a => {
+          if (a.id === articleId)
+            return {...a, saved: false};
           else
-            return article;
+            return a;
         });
       } else if (this.props.category === "saved") {
-        articles = this.state.articles.filter(article => {
-          return deletedIds.indexOf(article.id) === -1;
+        articles = this.state.articles.filter(a => {
+          return a.id !== articleId;
         });
       }
       this.setState({articles});
