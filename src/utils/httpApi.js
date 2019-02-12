@@ -4,9 +4,19 @@ export function send(gmctx, url, options) {
   url = selfUrl(gmctx, url);
 
   if (gmctx.isServer) {
-    options = {...options, headers: {...options.headers}};
+    // copy the "cookie" header from the original request
+    options = {
+      ...options,
+      headers: {
+        ...options.headers,
+        cookie: gmctx.reqArgs.headers.cookie
+      }
+    };
   } else {
-    options = {...options, credentials: "same-origin"};
+    options = {
+      ...options,
+      credentials: "same-origin"
+    };
   }
 
   return fetch(url, options).then(res => {

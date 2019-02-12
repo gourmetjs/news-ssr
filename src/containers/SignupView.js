@@ -69,8 +69,8 @@ export default class SignupView extends Component {
     if (password !== verify)
       throw Error("Two passwords don't match");
 
-    return httpApi.post(this.props.gmctx, "/api/signup", {name, username, password}).then(() => {
-      window.location = "/";
+    return httpApi.post(this.props.gmctx, "/api/signup", {name, username, password}).then(({redirectTo}) => {
+      window.location = redirectTo || "/";
     });
   }
 }

@@ -44,8 +44,8 @@ export default class LoginView extends Component {
     const username = this.usernameRef.current.value.toLowerCase().trim();
     const password = this.passwordRef.current.value.trim();
 
-    return httpApi.post(this.props.gmctx, "/api/login", {username, password}).then(() => {
-      window.location = "/";
+    return httpApi.post(this.props.gmctx, "/api/login", {username, password}).then(({redirectTo}) => {
+      window.location = redirectTo || "/";
     });
    }
 }
