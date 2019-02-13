@@ -1,14 +1,10 @@
 import React, {Component} from "react";
-import NewsPane from "./NewsPane";
+import LoremIpsum from "../components/LoremIpsum";
 
 export default class SavedView extends Component {
-  static getInitialProps(gmctx) {
-    return NewsPane.fetchArticles(gmctx, {category: "saved"});
-  }
-
   render() {
     return (
-      <NewsPane category="saved" {...this.props}/>
+      <LoremIpsum/>
     );
   }
 }

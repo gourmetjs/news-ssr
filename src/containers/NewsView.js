@@ -1,14 +1,10 @@
 import React, {Component} from "react";
-import NewsPane from "./NewsPane";
+import LoremIpsum from "../components/LoremIpsum";
 
 export default class NewsView extends Component {
-  static getInitialProps(gmctx) {
-    return NewsPane.fetchArticles(gmctx, {category: "latest"});
-  }
-
   render() {
     return (
-      <NewsPane category="latest" {...this.props}/>
+      <LoremIpsum/>
     );
   }
 }
