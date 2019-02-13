@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon --ignore src lib/server.js -- --watch",
+    "build": "gourmet build",
     "start": "node lib/server.js",
     "migrate": "knex migrate:latest",
     "migrate:make": "knex migrate:make",
@@ -21,14 +22,13 @@
   },
   "devDependencies": {
     "@gourmet/gourmet-cli": "^1.1.0",
+    "@gourmet/preset-react": "^1.2.2",
     "@gourmet/group-react-i80": "^1.2.0",
-    "@gourmet/preset-react-emotion": "^1.2.2",
+    "@gourmet/group-react-emotion": "^1.1.0",
     "@gourmet/self-url": "^1.1.0",
-    "bootstrap": "^4.3.0",
     "classnames": "^2.2.6",
     "nodemon": "^1.18.10",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "whatwg-fetch": "^3.0.0"
+    "react-dom": "^16.8.1"
   }
 }
