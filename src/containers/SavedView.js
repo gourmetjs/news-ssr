@@ -1,10 +1,11 @@
-import React, {Component} from "react";
-import LoremIpsum from "../components/LoremIpsum";
+import React from "react";
 
-export default class SavedView extends Component {
-  render() {
-    return (
-      <LoremIpsum/>
-    );
-  }
+export default function SavedView() {
+  return (
+    <div>
+      <p>Saved article #1</p>
+      <p>Saved article #2</p>
+      <p>Saved article #3</p>
+    </div>
+  );
 }

@@ -10,7 +10,8 @@ i80([
 
 export default function PublicPage() {
   return (
-    <div className="container">
+    <div>
+      <h1>Public Page</h1>
       <ActiveRoute/>
     </div>
   );

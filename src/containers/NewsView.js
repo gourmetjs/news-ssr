@@ -1,10 +1,11 @@
-import React, {Component} from "react";
-import LoremIpsum from "../components/LoremIpsum";
+import React from "react";
 
-export default class NewsView extends Component {
-  render() {
-    return (
-      <LoremIpsum/>
-    );
-  }
+export default function NewsView() {
+  return (
+    <div>
+      <p>News article #1</p>
+      <p>News article #2</p>
+      <p>News article #3</p>
+    </div>
+  );
 }
