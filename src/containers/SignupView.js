@@ -62,7 +62,6 @@ export default class SignupView extends Component {
   }
 
   onSubmit() {
-    const {gmctx} = this.props;
     const name = this.nameRef.current.value.trim();
     const username = this.usernameRef.current.value.toLowerCase().trim();
     const password = this.passwordRef.current.value.trim();
