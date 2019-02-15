@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "express": "^4.16.4",
+    "body-parser": "^1.18.3",
     "@gourmet/server-args": "^1.2.1",
     "@gourmet/client-lib": "^1.2.0"
   },
