@@ -13,6 +13,7 @@
     "@gourmet/server-args": "^1.2.1",
     "@gourmet/client-lib": "^1.2.0",
     "body-parser": "^1.18.3",
+    "@gourmet/error": "^0.3.1",
     "knex": "^0.16.3",
     "pg": "^7.8.0",
     "sqlite3": "^4.0.6",
