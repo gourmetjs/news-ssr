@@ -19,7 +19,7 @@ export default function MainPage({user}) {
           className="btn btn-outline-secondary btn-sm ml-3"
           onClick={() => {
             httpApi.post("/api/logout").then(() => {
-              window.location = "/login";
+              i80.goToUrl("/login");
             }).catch(err => {
               console.error(err);
             });
