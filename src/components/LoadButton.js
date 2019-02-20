@@ -15,6 +15,14 @@ export default class LoadButton extends Component {
     };
   }
 
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
     return (
       <button
@@ -52,9 +60,11 @@ export default class LoadButton extends Component {
     if (!this.state.isLoading) {
       this.setState({isLoading: true, lastError: null});
       this.props.onLoad().then(() => {
-        this.setState({isLoading: false, lastError: null});
+        if (this._isMounted)
+          this.setState({isLoading: false, lastError: null});
       }).catch(err => {
-        this.setState({isLoading: false, lastError: err});
+        if (this._isMounted)
+          this.setState({isLoading: false, lastError: err});
       });
     }
   }
