@@ -19,7 +19,7 @@
     "express-session": "^1.15.6",
     "connect-session-knex": "^1.4.0",
     "bcrypt": "^3.0.4",
-    "got": "^9.6.0"
+    "node-fetch": "^2.3.0"
   },
   "devDependencies": {
     "@gourmet/gourmet-cli": "^1.1.0",
