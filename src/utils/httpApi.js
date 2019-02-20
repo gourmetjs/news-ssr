@@ -1,4 +1,4 @@
-export default function httpApi(url, options={}) {
+export default function httpApi(url, options) {
   options = Object.assign({
     headers: {},
     credentials: "same-origin"
