@@ -1,14 +1,11 @@
 import selfUrl from "@gourmet/self-url";
 
-export default function httpApi(url, options={}, gmctx) {
-  options = {
-    ...options,
-    headers: {
-      ...options.headers,
-      accept: "application/json"
-    },
+export default function httpApi(url, options, gmctx) {
+  options = Object.assign({
+    headers: {},
     credentials: "same-origin"
-  };
+  }, options);
+  options.headers.accept = "application/json";
 
   if (gmctx && gmctx.isServer) {
     // copy the "cookie" header from the original request
