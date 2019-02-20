@@ -9,7 +9,8 @@ if (args.stage === "local") {
     client: "sqlite3",
     connection: {
       filename: `${__dirname}/.news-ssr.sqlite3`
-    }
+    },
+    useNullAsDefault: true
   };
 } else {
   if (!process.env.PG_CONNECTION_STRING)
