@@ -1,9 +1,0 @@
-{
-  "extends": "gourmet/gourmet_app",
-  "root": true,
-  "settings": {
-    "react": {
-      "version": "16"
-    }
-  }
-}
