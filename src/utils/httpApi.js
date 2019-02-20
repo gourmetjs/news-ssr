@@ -1,4 +1,15 @@
-export function send(url, options) {
+export default function httpApi(url, options) {
+  options = Object.assign({
+    headers: {},
+    credentials: "same-origin"
+  }, options);
+  options.headers.accept = "application/json";
+
+  if (options.body) {
+    options.body = JSON.stringify(options.body);
+    options.headers["content-type"] = "application/json";
+  }
+
   return fetch(url, options).then(res => {
     return res.json().then(data =>{
       if (res.status !== 200) {
@@ -11,24 +22,5 @@ export function send(url, options) {
       }
       return data;
     });
-  });
-}
-
-export function get(url) {
-  return send(url, {
-    headers: {
-      "accept": "application/json"
-    }
-  });
-}
-
-export function post(url, body) {
-  return send(url, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "accept": "application/json"
-    },
-    body: JSON.stringify(body)
   });
 }

@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import i80 from "@gourmet/react-i80";
+import httpApi from "../utils/httpApi";
 import CenteredBox from "../components/CenteredBox";
 import HorzForm from "../components/HorzForm";
-import * as httpApi from "../utils/httpApi";
 
 export default class LoginView extends Component {
   static HEADER = (<h3>Log in to NewsApp</h3>);
@@ -45,7 +45,10 @@ export default class LoginView extends Component {
     const username = this.usernameRef.current.value.toLowerCase().trim();
     const password = this.passwordRef.current.value.trim();
 
-    return httpApi.post("/api/login", {username, password}).then(() => {
+    return httpApi("/api/login", {
+      method: "POST",
+      body: {username, password}
+    }).then(() => {
       i80.goToUrl("/");
     });
   }

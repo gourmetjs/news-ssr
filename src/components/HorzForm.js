@@ -7,9 +7,6 @@ export default class HorzForm extends Component {
   };
 
   componentDidMount() {
-    // In our case, maintaining `_isMounted` flag is the best way to handle a case
-    // that this component is unmounted by user's `onSubmit` handler.
-    // Usually, it is considered as an antipattern: https://reactjs.org/blog/2015/12/16/ismounted-antipattern.html
     this._isMounted = true;
   }
 
