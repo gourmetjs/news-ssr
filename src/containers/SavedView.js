@@ -1,11 +1,14 @@
-import React from "react";
+import React, {Component} from "react";
+import NewsPane from "./NewsPane";
 
-export default function SavedView() {
-  return (
-    <div>
-      <p>Saved article #1</p>
-      <p>Saved article #2</p>
-      <p>Saved article #3</p>
-    </div>
-  );
+export default class SavedView extends Component {
+  static getInitialProps(gmctx) {
+    return NewsPane.fetchSaved(gmctx);
+  }
+
+  render() {
+    return (
+      <NewsPane source="saved" {...this.props}/>
+    );
+  }
 }
