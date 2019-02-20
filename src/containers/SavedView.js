@@ -1,14 +1,11 @@
-import React, {Component} from "react";
-import ArticlesPane from "./ArticlesPane";
+import React from "react";
 
-export default class SavedView extends Component {
-  static getInitialProps(gmctx) {
-    return ArticlesPane.fetchInitialArticles(gmctx, "saved");
-  }
-
-  render() {
-    return (
-      <ArticlesPane source="saved" {...this.props}/>
-    );
-  }
+export default function SavedView() {
+  return (
+    <div>
+      <p>Saved article #1</p>
+      <p>Saved article #2</p>
+      <p>Saved article #3</p>
+    </div>
+  );
 }

@@ -1,14 +1,11 @@
-import React, {Component} from "react";
-import ArticlesPane from "./ArticlesPane";
+import React from "react";
 
-export default class NewsView extends Component {
-  static getInitialProps(gmctx) {
-    return ArticlesPane.fetchInitialArticles(gmctx, "news");
-  }
-
-  render() {
-    return (
-      <ArticlesPane source="news" {...this.props}/>
-    );
-  }
+export default function NewsView() {
+  return (
+    <div>
+      <p>News article #1</p>
+      <p>News article #2</p>
+      <p>News article #3</p>
+    </div>
+  );
 }
