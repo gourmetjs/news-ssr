@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import i80 from "@gourmet/react-i80";
+import httpApi from "../utils/httpApi";
 import CenteredBox from "../components/CenteredBox";
 import HorzForm from "../components/HorzForm";
-import httpApi from "../utils/httpApi";
 
 export default class SignupView extends Component {
   static HEADER = (<h3>Create an account</h3>);
