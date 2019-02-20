@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import i80 from "@gourmet/react-i80";
 import CenteredBox from "../components/CenteredBox";
 import HorzForm from "../components/HorzForm";
-import * as httpApi from "../utils/httpApi";
+import httpApi from "../utils/httpApi";
 
 export default class SignupView extends Component {
   static HEADER = (<h3>Create an account</h3>);
@@ -70,7 +70,10 @@ export default class SignupView extends Component {
     if (password !== verify)
       throw Error("Two passwords don't match");
 
-    return httpApi.post("/api/signup", {name, username, password}).then(() => {
+    return httpApi("/api/signup", {
+      method: "POST",
+      body: {name, username, password}
+    }).then(() => {
       i80.goToUrl("/");
     });
   }

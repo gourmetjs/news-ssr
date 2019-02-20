@@ -1,4 +1,26 @@
-export function send(url, options) {
+import selfUrl from "@gourmet/self-url";
+
+export default function httpApi(url, options={}, gmctx) {
+  options = {
+    ...options,
+    headers: {
+      ...options.headers,
+      accept: "application/json"
+    },
+    credentials: "same-origin"
+  };
+
+  if (gmctx && gmctx.isServer) {
+    // copy the "cookie" header from the original request
+    url = selfUrl(gmctx, url);
+    options.headers.cookie = gmctx.reqArgs.headers.cookie;
+  }
+
+  if (options.body) {
+    options.body = JSON.stringify(options.body);
+    options.headers["content-type"] = "application/json";
+  }
+
   return fetch(url, options).then(res => {
     return res.json().then(data =>{
       if (res.status !== 200) {
@@ -11,24 +33,5 @@ export function send(url, options) {
       }
       return data;
     });
-  });
-}
-
-export function get(url) {
-  return send(url, {
-    headers: {
-      "accept": "application/json"
-    }
-  });
-}
-
-export function post(url, body) {
-  return send(url, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "accept": "application/json"
-    },
-    body: JSON.stringify(body)
   });
 }

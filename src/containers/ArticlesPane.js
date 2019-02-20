@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {css} from "emotion";
-import * as httpApi from "../utils/httpApi";
+import httpApi from "../utils/httpApi";
 import Articles from "../components/Articles";
 import LoadButton from "../components/LoadButton";
 import ErrorBanner from "../components/ErrorBanner";
@@ -34,7 +34,7 @@ function Empty() {
   );
 }
 
-export default class NewsPane extends Component {
+export default class ArticlesPane extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,12 +45,9 @@ export default class NewsPane extends Component {
     };
   }
 
-  static fetchNews(gmctx, page=1) {
-    return httpApi.get(gmctx, `/api/news?page=${page}`);
-  }
-
-  static fetchSaved(gmctx, page=1) {
-    return httpApi.get(gmctx, `/api/saved?page=${page}`);
+  // source = "news" or "saved"
+  static fetchInitialArticles(gmctx, source) {
+    return httpApi(`/api/${source}`, {method: "GET"}, gmctx);
   }
 
   render() {
@@ -83,14 +80,14 @@ export default class NewsPane extends Component {
   }
 
   loadMore() {
-    return NewsPane.fetchArticles(this.props.gmctx, {
-      category: this.props.category,
-      page: this.state.page + 1
-    }).then(data => {
+    const {source} = this.props;
+    const {page, articles} = this.state;
+
+    return httpApi(`/api/${source}?page=${page + 1}`).then(data => {
       this.setState({
-        articles: this.state.articles.concat(data.articles),
+        articles: articles.concat(data.articles),
         hasMore: data.hasMore,
-        page: this.state.page + 1
+        page: page + 1
       });
     }).catch(err => {
       this.setState({lastError: err});
@@ -99,7 +96,10 @@ export default class NewsPane extends Component {
   }
 
   saveArticle(article) {
-    return httpApi.post(this.props.gmctx, "/api/news", {action: "save", article}).then(() => {
+    return httpApi("/api/saved", {
+      method: "POST",
+      body: {article}
+    }).then(() => {
       const articles = this.state.articles.map(a => {
         if (a.id === article.id)
           return {...a, saved: true};
@@ -113,16 +113,17 @@ export default class NewsPane extends Component {
   }
   
   unsaveArticle(articleId) {
-    return httpApi.post(this.props.gmctx, "/api/news", {action: "unsave", articleId}).then(() => {
+    return httpApi(`/api/saved/${articleId}`, {method: "DELETE"}).then(() => {
+      const {source} = this.props;
       let articles;
-      if (this.props.category === "latest") {
+      if (source === "news") {
         articles = this.state.articles.map(a => {
           if (a.id === articleId)
             return {...a, saved: false};
           else
             return a;
         });
-      } else if (this.props.category === "saved") {
+      } else {
         articles = this.state.articles.filter(a => {
           return a.id !== articleId;
         });

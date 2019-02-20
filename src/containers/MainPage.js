@@ -1,6 +1,6 @@
 import React from "react";
 import i80, {ActiveRoute, Link} from "@gourmet/react-i80";
-import * as httpApi from "../utils/httpApi";
+import httpApi from "../utils/httpApi";
 import TabbedPanes from "../components/TabbedPanes";
 import NewsView from "./NewsView";
 import SavedView from "./SavedView";
@@ -32,7 +32,10 @@ export default function MainPage({user}) {
           type="button"
           className="btn btn-outline-secondary btn-sm ml-3"
           onClick={() => {
-            httpApi.post("/api/logout").then(() => {
+            httpApi("/api/logout", {
+              method: "POST",
+              body: {}
+            }).then(() => {
               i80.goToUrl("/login");
             }).catch(err => {
               console.error(err);
