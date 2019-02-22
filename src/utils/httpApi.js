@@ -8,8 +8,10 @@ export default function httpApi(url, options, gmctx) {
   options.headers.accept = "application/json";
 
   if (gmctx && gmctx.isServer) {
-    // copy the "cookie" header from the original request
+    // `/api/news` => `https://myserver.example.com/api/news`
     url = selfUrl(gmctx, url);
+
+    // copy the "cookie" header from the original request
     options.headers.cookie = gmctx.reqArgs.headers.cookie;
   }
 
