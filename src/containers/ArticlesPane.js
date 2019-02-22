@@ -46,7 +46,7 @@ export default class ArticlesPane extends Component {
   }
 
   // source = "news" or "saved"
-  static fetchInitialArticles(gmctx, source) {
+  static fetchInitialArticles(source, gmctx) {
     return httpApi(`/api/${source}`, {method: "GET"}, gmctx);
   }
 

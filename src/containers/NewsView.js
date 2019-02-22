@@ -3,7 +3,7 @@ import ArticlesPane from "./ArticlesPane";
 
 export default class NewsView extends Component {
   static getInitialProps(gmctx) {
-    return ArticlesPane.fetchInitialArticles(gmctx, "news");
+    return ArticlesPane.fetchInitialArticles("news", gmctx);
   }
 
   render() {
