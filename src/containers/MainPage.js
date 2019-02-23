@@ -12,12 +12,12 @@ i80([
 
 export default function MainPage({user}) {
   const tabs = [
-    <Link className="nav-link" href="/" replace key="news">
+    <Link className="nav-link" href="/" replace>
       <i className="far fa-newspaper"/>
       &nbsp;
       Latest News Headlines
     </Link>,
-    <Link className="nav-link" href="/saved" replace key="news">
+    <Link className="nav-link" href="/saved" replace>
       <i className="far fa-bookmark"/>
       &nbsp;
       Saved Articles
