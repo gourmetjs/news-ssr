@@ -4,7 +4,11 @@ Documentation=https://github.com/gourmetjs/news-ssr
 After=network.target
 
 [Service]
-Environment=NODE_ENV=production STAGE=prod PORT=3080 PG_CONNECTION_STRIN='postgres://postgres@localhost/postgres' NEWS_API_KEY=0123456789abcdef0123456789abcdef
+Environment=NODE_ENV=production
+Environment=STAGE=prod
+Environment=PORT=3080
+Environment=PG_CONNECTION_STRING=postgres://postgres@localhost/postgres
+Environment=NEWS_API_KEY=0123456789abcdef0123456789abcdef
 Type=simple
 User=nodejs
 ExecStart=/usr/bin/node /var/app/news-ssr/lib/server.js

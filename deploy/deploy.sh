@@ -9,6 +9,6 @@ sudo rm -fr /var/app/news-ssr/*   # delete the current deployment
 
 # copy newly built files, and install dependencies in production mode
 sudo -u nodejs cp -R *.js *.json lib .gourmet /var/app/news-ssr/
-sudo -u nodejs -H /var/app/news-ssr npm install --production
+sudo -u nodejs npm install --prefix /var/app/news-ssr --production
 
 sudo systemctl start news-ssr     # restart the server
