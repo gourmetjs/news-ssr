@@ -1,5 +1,8 @@
 #!/bin/bash -xe
 
+# set PG_CONNECTION_STRING to the local server
+export PG_CONNECTION_STRING=postgres://postgres@localhost/postgres
+
 STAGE=prod npm run build          # make the production build
 rm -fr .gourmet/prod/info         # remove unnecessary files
 STAGE=prod npm run migrate        # run migrations
