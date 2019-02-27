@@ -1,0 +1,15 @@
+[Unit]
+Description=NewsApp
+Documentation=https://github.com/gourmetjs/news-ssr
+After=network.target
+
+[Service]
+Environment=NODE_ENV=production STAGE=prod PORT=3080 PG_CONNECTION_STRIN='postgres://postgres@localhost/postgres'
+Type=simple
+User=nodejs
+ExecStart=/usr/bin/node /var/app/news-ssr/lib/server.js
+TimeoutStopSec=30
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
