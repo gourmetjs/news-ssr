@@ -1,9 +1,14 @@
 export default function httpApi(url, options) {
-  options = Object.assign({
-    headers: {},
-    credentials: "same-origin"
-  }, options);
-  options.headers.accept = "application/json";
+  options = {
+    credentials: "same-origin",
+    ...options,
+    headers: {
+      accept: "application/json",
+      "cache-control": "no-cache",
+      "pragma": "no-cache",
+      ...(options && options.headers)
+    }
+  };
 
   if (options.body) {
     options.body = JSON.stringify(options.body);
