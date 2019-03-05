@@ -1,5 +1,4 @@
-import React, {Component} from "react";
-import ArticlesPane from "./ArticlesPane";
+import React from "react";
 
 export default class SavedView extends Component {
   static getInitialProps(gmctx) {

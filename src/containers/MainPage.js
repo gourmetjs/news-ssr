@@ -1,7 +1,6 @@
 import React from "react";
-import i80, {ActiveRoute, Link} from "@gourmet/react-i80";
+import i80, {ActiveRoute} from "@gourmet/react-i80";
 import httpApi from "../utils/httpApi";
-import TabbedPanes from "../components/TabbedPanes";
 import NewsView from "./NewsView";
 import SavedView from "./SavedView";
 
@@ -45,12 +44,7 @@ export default function MainPage({user}) {
           Log out
         </button>
       </div>
-      <TabbedPanes tabs={tabs}>
-        <ActiveRoute/>
-      </TabbedPanes>
-      <div className="text-muted mt-3">
-        * News data from https://newsapi.org
-      </div>
+      <ActiveRoute/>
     </div>
   );
 }

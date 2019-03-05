@@ -25,9 +25,6 @@
     "@gourmet/gourmet-cli": "^1.1.0",
     "@gourmet/preset-react": "^1.2.3",
     "@gourmet/group-react-i80": "^1.2.0",
-    "@gourmet/group-react-emotion": "^1.1.0",
-    "@gourmet/self-url": "^1.1.0",
-    "classnames": "^2.2.6",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "nodemon": "^1.18.10"
