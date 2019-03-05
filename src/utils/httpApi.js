@@ -7,7 +7,7 @@ export default function httpApi(url, options, gmctx) {
     headers: {
       accept: "application/json",
       "cache-control": "no-cache",
-      "pragma": "no-cache",
+      pragma: "no-cache",
       ...(options && options.headers)
     }
   };
