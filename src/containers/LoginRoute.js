@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LoginView() {
+export default function LoginRoute() {
   return (
     <div>
       <p>Login Form</p>

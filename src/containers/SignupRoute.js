@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SignupView() {
+export default function SignupRoute() {
   return (
     <div>
       <p>Signup Form</p>
