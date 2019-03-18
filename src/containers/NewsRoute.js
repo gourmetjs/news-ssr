@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function NewsView() {
+export default function NewsRoute() {
   return (
     <div>
       <p>News article #1</p>
