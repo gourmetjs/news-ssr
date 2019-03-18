@@ -2,12 +2,12 @@ import React from "react";
 import i80, {ActiveRoute, Link} from "@gourmet/react-i80";
 import httpApi from "../utils/httpApi";
 import TabbedPanes from "../components/TabbedPanes";
-import NewsView from "./NewsView";
-import SavedView from "./SavedView";
+import NewsRoute from "./NewsRoute";
+import SavedRoute from "./SavedRoute";
 
 i80([
-  ["/", NewsView],
-  ["/saved", SavedView]
+  ["/", NewsRoute],
+  ["/saved", SavedRoute]
 ]);
 
 export default function MainPage({user}) {
