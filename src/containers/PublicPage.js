@@ -1,11 +1,11 @@
 import React from "react";
 import i80, {ActiveRoute} from "@gourmet/react-i80";
-import LoginView from "./LoginView";
-import SignupView from "./SignupView";
+import LoginRoute from "./LoginRoute";
+import SignupRoute from "./SignupRoute";
 
 i80([
-  ["/login", LoginView],
-  ["/signup", SignupView]
+  ["/login", LoginRoute],
+  ["/signup", SignupRoute]
 ]);
 
 export default function PublicPage() {

@@ -4,7 +4,7 @@ import httpApi from "../utils/httpApi";
 import CenteredBox from "../components/CenteredBox";
 import HorzForm from "../components/HorzForm";
 
-export default class SignupView extends Component {
+export default class SignupRoute extends Component {
   static HEADER = (<h3>Create an account</h3>);
   static FOOTER = (<p>Already have an account? <a href="/login">Log in instead.</a></p>);
 
@@ -15,7 +15,7 @@ export default class SignupView extends Component {
 
   render() {
     return (
-      <CenteredBox header={SignupView.HEADER} footer={SignupView.FOOTER}>
+      <CenteredBox header={SignupRoute.HEADER} footer={SignupRoute.FOOTER}>
         <HorzForm onSubmit={() => this.onSubmit()}>
           <div className="form-group row">
             <label htmlFor="name" className="col-sm-3 col-form-label">Name:</label>
