@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SavedView() {
+export default function SavedRoute() {
   return (
     <div>
       <p>Saved article #1</p>
